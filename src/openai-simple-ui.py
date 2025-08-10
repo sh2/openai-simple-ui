@@ -16,8 +16,8 @@ def main():
         model_options = ["gpt-5", "gpt-5-mini", "gpt-5-nano"]
         model = st.selectbox("Model", model_options, index=0)
         reasoning_effort = st.selectbox(
-            "Reasoning effort", get_args(ReasoningEffort), index=1)
-        verbosity = st.selectbox("Verbosity", get_args(Verbosity), index=1)
+            "Reasoning effort", get_args(ReasoningEffort), index=0)
+        verbosity = st.selectbox("Verbosity", get_args(Verbosity), index=0)
 
     if new_chat or "messages" not in st.session_state:
         st.session_state.messages = []
