@@ -10,15 +10,16 @@ def main():
     st.set_page_config(page_title="OpenAI Simple UI")
     st.title("OpenAI Simple UI")
 
-    model_options = ["gpt-5", "gpt-5-mini", "gpt-5-nano"]
-    model = st.selectbox("Model", model_options, index=0)
-    reasoning_effort = st.selectbox(
-        "Reasoning effort", get_args(ReasoningEffort), index=1)
-    verbosity = st.selectbox("Verbosity", get_args(Verbosity), index=1)
+    with st.sidebar:
+        new_chat = st.button("New chat")
+        st.title("Settings")
+        model_options = ["gpt-5", "gpt-5-mini", "gpt-5-nano"]
+        model = st.selectbox("Model", model_options, index=0)
+        reasoning_effort = st.selectbox(
+            "Reasoning effort", get_args(ReasoningEffort), index=1)
+        verbosity = st.selectbox("Verbosity", get_args(Verbosity), index=1)
 
-    clear = st.button("Clear chat history")
-
-    if clear or "messages" not in st.session_state:
+    if new_chat or "messages" not in st.session_state:
         st.session_state.messages = []
 
     for message in st.session_state.messages:
@@ -26,16 +27,15 @@ def main():
             st.markdown(message["content"])
 
     if prompt := st.chat_input("Ask anything"):
-        st.session_state.messages.append({"role": "user", "content": prompt})
+        messages = []
         response = ""
+        st.session_state.messages.append({"role": "user", "content": prompt})
 
         with st.chat_message("user"):
             st.markdown(prompt)
 
         with st.chat_message("assistant"):
             message_assistant = st.empty()
-
-        messages = []
 
         for message in st.session_state.messages:
             messages.append(message)
@@ -54,7 +54,7 @@ def main():
                 message_assistant.markdown(response + "▌")
 
         message_assistant.markdown(response)
-        
+
         st.session_state.messages.append(
             {"role": "assistant", "content": response})
 
