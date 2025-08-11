@@ -1,4 +1,4 @@
-# Package List
+# Package list
 
 - openai
 - streamlit
