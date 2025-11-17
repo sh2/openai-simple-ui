@@ -1,12 +1,12 @@
 # OpenAI Simple UI
 
-A minimal Streamlit-based chat UI for OpenAI models (example list: `gpt-5`, `gpt-5-mini`, `gpt-5-nano`). It lets you adjust `reasoning_effort` and `verbosity` from the sidebar and streams tokens as they arrive.
+A minimal Streamlit-based chat UI for OpenAI models (example list: `gpt-5.1`, `gpt-5.1-chat-latest`, `gpt-5`, `gpt-5-mini`, `gpt-5-nano`). It lets you adjust `reasoning_effort` and `verbosity` from the sidebar and streams tokens as they arrive.
 
 ## Features
 
 - Very small chat interface using `st.chat_message`
 - OpenAI Python SDK v1 streaming (`client.chat.completions.create(stream=True, ...)`)
-- Sidebar controls for `reasoning_effort` (high / medium / low / minimal) and `verbosity` (high / medium / low)
+- Sidebar controls for `reasoning_effort` (high / medium / low / minimal / none) and `verbosity` (high / medium / low)
 - Easy to extend the model list
 - Runs locally or via container (Podman / Docker)
 
