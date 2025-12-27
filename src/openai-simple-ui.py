@@ -13,7 +13,7 @@ def main():
     with st.sidebar:
         new_chat = st.button("New chat")
         st.title("Settings")
-        model_options = ["gpt-5.1", "gpt-5.1-chat-latest", "gpt-5", "gpt-5-mini", "gpt-5-nano"]
+        model_options = ["gpt-5.2", "gpt-5.2-chat-latest"]
         model = st.selectbox("Model", model_options, index=0)
         reasoning_effort = st.selectbox(
             "Reasoning effort", get_args(ReasoningEffort), index=1)
